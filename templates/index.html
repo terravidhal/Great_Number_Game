@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- linking a css style sheet -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>great number game</title>
+</head>
+
+<body>
+  <h1>Welcome to the Great Number Game</h1>
+  <h3>I am thinking of a number between 1 and 100</h3>
+  <h3>Take a guess!</h3>
+  
+  {% if session["add_count"] == 5 %}
+    <h3>{{session["add_count"]}} attempts already: 'you lose'. Please try again!</h3>
+    <div class="lose bloc">
+      <form action='/destroy_session' method='POST'>
+        <input type='submit' value='Play again!'>
+      </form>
+    </div>
+  {% endif %}
+
+  {% if mssg_result != "success" and session["add_count"] != 5 %}
+    <h3>{{session["add_count"]}} attempts already : 'you lose'</h3>
+  {% elif mssg_result == "success" and session["add_count"] != 5 %}
+    <h3>well done, you found the correct answer after a total of {{session["add_count"]}} attempts : 'you win'</h3>
+  {% endif %}
+  
+  {% if mssg_result == "Too_high" and  session["add_count"] != 5 %}
+  <div class="too_high bloc">Too high</div>
+
+  {% elif mssg_result == "Too_low" and  session["add_count"] != 5 %}
+  <div class="too_low bloc">Too low</div>
+
+  {% elif mssg_result == "success" %}
+    <div class="success bloc">
+      <p>{{user_number}} was the number</p>
+      <form action='/destroy_session' method='POST'>
+        <input type='submit' value='Play again!'>
+      </form>
+    </div>
+    <form action="/shows_winners" method='POST'>
+      <label for="name_winners">Enter your name</label>
+      <input type="text" name="name_winners" id="name_winners">
+      <label for="counts_attempts">your counts attempts : </label>
+      <input type="text" name="counts_attempts" id="counts_attempts" value="{{session["add_count"]}}">
+      <input class="infos" type='submit' value='Submit your information'>
+    </form>
+  {% endif %}
+
+  {% if mssg_result != "success" and  session["add_count"] != 5 %}
+  <form action='/random_numb' method='POST'>
+    <input type='text' name='random_number' id="random_number">
+    <input type='submit' value='Submit'>
+  </form>
+  {% endif %}
+
+  {# a comment #}
+</body>
+
+</html>

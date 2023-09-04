@@ -1,0 +1,77 @@
+body {
+  margin: 0px;
+  margin-bottom: 40px;
+  padding: 0px;
+}
+
+h1,
+h3 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#container {
+  width: 80%;
+  margin: 40px auto;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+  align-items: center;
+  gap: 10px;
+}
+form > * {
+  width: 50%;
+  height: 30px;
+}
+
+form > input[type="submit"] {
+  width: 15%;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.bloc {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin: 15px auto;
+}
+.too_high{
+  background-color: red;
+}
+.too_low {
+  background-color: rgb(147, 32, 32);
+}
+.success {
+  background-color: green;
+}
+.lose {
+  background-color: orange;
+}
+.success form input,.lose form input {
+  width: 65%;
+}
+input.infos{
+  width: 30% !important;
+}
+h3.mssg{
+  color: brown !important;
+}
+.green{
+  color: green;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 30px;
+  margin-bottom: 10px
+}
