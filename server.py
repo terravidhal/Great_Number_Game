@@ -3,7 +3,7 @@ import random    # import the random module
 
 
 app = Flask(__name__)
-app.secret_key = '9b6ca28fa79c8f2bb542c7a417cdf1f93a836ad30cf127306d9b039470072c0f' # python -c 'import secrets; print(secrets.token_hex())'
+app.secret_key = '' # python -c 'import secrets; print(secrets.token_hex())'
 
 @app.route("/") 
 def home():
